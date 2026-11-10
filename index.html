@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAÉ BUT GEII - Compte-rendu de projets</title>
+    <!-- Importation de la police Open Sans utilisée sur le portail GEII -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Bandeau de navigation inspiré du portail GEII IUT Lille -->
+    <header class="top-bar">
+        <div class="nav-wrapper">
+            <a href="#haut" class="nav-home" onclick="fermerTousLesProjets()">
+                &#8962; Accueil SAÉ
+            </a>
+            <nav class="nav-menu">
+                <a href="#zone-projets" onclick="ouvrirDepuisMenu('mcc')">Maquette MCC</a>
+                <a href="#zone-projets" onclick="ouvrirDepuisMenu('pv')">Dimensionnement PV</a>
+                <a href="#bilan-global">Bilan &amp; Retours</a>
+            </nav>
+        </div>
+        <div class="sub-bar">
+            <div class="sub-bar-content">
+                <span>IUT A de l'Université de Lille — Département GEII (Parcours EME)</span>
+                <span>Site de Villeneuve d'Ascq</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="haut" class="main-container">
+
+        <!-- En-tête de présentation avec bloc unifié -->
+        <section class="intro-banner">
+            <h1>Compte-rendu de SAÉ : Électromagnétisme &amp; Énergie Solaire</h1>
+            <p class="intro-lead">
+                Ce site regroupe les travaux que nous avons menés sur nos deux sujets de SAÉ : la fabrication d'une maquette de machine à courant continu réduite à l'essentiel, et la création d'un outil de dimensionnement photovoltaïque appliqué aux bâtiments de l'IUT.
+            </p>
+
+            <!-- Encadré unique réunissant étudiants (ordre alphabétique) et enseignant référent -->
+            <div class="unified-meta-box">
+                <div class="meta-group">
+                    <span class="meta-label">Étudiants (cliquez sur un nom pour mettre ses retours en évidence) :</span>
+                    <div class="student-pills">
+                        <button type="button" class="student-btn" data-target="axel" onclick="ciblerEtudiant('axel')">
+                            ANTOINE Axel
+                        </button>
+                        <button type="button" class="student-btn" data-target="lucas" onclick="ciblerEtudiant('lucas')">
+                            DECLERCQ Lucas
+                        </button>
+                        <button type="button" class="student-btn" data-target="romain" onclick="ciblerEtudiant('romain')">
+                            MELIQUE Romain
+                        </button>
+                    </div>
+                </div>
+                <div class="meta-divider"></div>
+                <div class="meta-group">
+                    <span class="meta-label">Enseignant référent :</span>
+                    <span class="prof-name">M. LE TORIELLEC David</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cartes de sélection des projets (ouverture / fermeture au clic) -->
+        <section id="zone-projets" class="cards-section">
+            <div class="section-heading">
+                <h2>Nos deux projets techniques</h2>
+                <p>Cliquez sur une carte pour dérouler le rapport correspondant, puis recliquez dessus pour le refermer.</p>
+            </div>
+
+            <div class="cards-grid">
+                <!-- Carte Projet 1 -->
+                <div id="card-mcc" class="project-card" onclick="basculerProjet('mcc')" role="button" tabindex="0">
+                    <div class="card-top">
+                        <span class="tag-pill">Projet 1</span>
+                        <h3>Maquette simple de MCC</h3>
+                        <p>
+                            Réalisation d'un moteur élémentaire composé d'un simple bobinage de cuivre et d'un aimant permanent pour observer concrètement l'action de la force de Lorentz.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <span id="etat-card-mcc" class="card-toggle-text">Afficher le compte-rendu &#9662;</span>
+                    </div>
+                </div>
+
+                <!-- Carte Projet 2 -->
+                <div id="card-pv" class="project-card" onclick="basculerProjet('pv')" role="button" tabindex="0">
+                    <div class="card-top">
+                        <span class="tag-pill tag-orange">Projet 2</span>
+                        <h3>Dimensionnement Solaire PV (IUT A)</h3>
+                        <p>
+                            Conception d'un tableur Excel complet pour étudier une installation photovoltaïque à Villeneuve d'Ascq : gisement solaire, inclinaisons optimales, masquage et bilans de rendement.
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <span id="etat-card-pv" class="card-toggle-text">Afficher le compte-rendu &#9662;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             RAPPORT DÉTAILLÉ DU PROJET 1 : MAQUETTE MCC
+             ========================================================= -->
+        <article id="contenu-mcc" class="report-panel">
+            <div class="report-banner">
+                <h2>Projet 1 : Maquette pédagogique de Machine à Courant Continu</h2>
+                <button type="button" class="btn-fermer-panel" onclick="basculerProjet('mcc')">
+                    Refermer le dossier &#10005;
+                </button>
+            </div>
+
+            <!-- Table des illustrations interactive -->
+            <nav class="illustrations-toc">
+                <h4>Table des illustrations et livrables (accès direct)</h4>
+                <ul>
+                    <li><a href="#mcc-fig1">Figure 1.1 — Schéma du bobinage dans le champ magnétique</a></li>
+                    <li><a href="#mcc-fig2">Figure 1.2 — Photo de notre maquette assemblée</a></li>
+                    <li><a href="#mcc-vid1">Vidéo 1.1 — Essai de mise en rotation sous alimentation continue</a></li>
+                    <li><a href="#mcc-pdf1">Document 1.1 — Dossier technique complet (Visionneuse PDF)</a></li>
+                </ul>
+            </nav>
+
+            <!-- [WORD : MCC - 1. Mise en contexte et consignes] -->
+            <section class="report-section">
+                <h3>1. Mise en contexte et consignes</h3>
+                <p>
+                    Pour ce premier volet de la SAÉ, la consigne était d'aller au plus simple : fabriquer une maquette fonctionnelle de machine à courant continu (MCC) en utilisant uniquement un bobinage de fil de cuivre, un aimant et deux supports conducteurs. L'idée est d'avoir un montage totalement ouvert qui permet de voir tout de suite comment l'énergie électrique est convertie en mouvement mécanique, sans que les pièces soient cachées dans une carcasse.
+                </p>
+            </section>
+
+            <!-- [WORD : MCC - 2. Introduction et fondamentaux] -->
+            <section class="report-section">
+                <h3>2. Introduction et principes de fonctionnement</h3>
+                <p>
+                    Le principe physique derrière notre maquette est la force de Laplace, qui découle directement de la force de Lorentz. Quand on fait circuler un courant continu $I$ dans les spires de la bobine et qu'on approche un aimant permanent créant un champ magnétique $\vec{B}$, les brins horizontaux de la bobine subissent une force $\vec{F} = I \cdot \vec{L} \wedge \vec{B}$.
+                </p>
+
+                <figure id="mcc-fig1" class="media-box">
+                    <img src="images/schema_mcc.jpg" alt="Schéma explicatif de la force de Laplace sur la bobine">
+                    <figcaption>Figure 1.1 — Action du champ magnétique de l'aimant sur les conducteurs de la bobine.</figcaption>
+                </figure>
+
+                <p>
+                    Si le courant circulait en permanence dans le même sens pendant un tour complet, le couple moteur s'inverserait au bout d'un demi-tour et la bobine se stabiliserait à l'équilibre. Comme nous n'avons pas de collecteur à lames avec des balais sur une maquette aussi simple, nous avons utilisé une astuce classique : gratter l'émail isolant du fil de cuivre sur une seule moitié de la circonférence de l'axe. De cette façon, le courant passe pendant un demi-tour pour donner une impulsion, puis se coupe sur le demi-tour suivant où la bobine continue sur sa lancée grâce à son inertie.
+                </p>
+            </section>
+
+            <!-- [WORD : MCC - 3. Réalisation et médias] -->
+            <section class="report-section">
+                <h3>3. Montage, réglages et résultats</h3>
+                <p>
+                    Lors de la fabrication, nous avons surtout dû soigner l'équilibrage de la bobine. Si les deux tiges qui servent d'axe ne sont pas bien alignées au centre de gravité, la bobine penche d'un côté et le contact électrique se fait mal sur les supports.
+                </p>
+
+                <figure id="mcc-fig2" class="media-box">
+                    <img src="images/photo_maquette_mcc.jpg" alt="Photographie de la maquette MCC réalisée">
+                    <figcaption>Figure 1.2 — Vue d'ensemble de notre maquette avec l'aimant permanent placé sous le rotor.</figcaption>
+                </figure>
+
+                <p>
+                    Une fois le dénudage demi-cylindrique bien ajusté par rapport à l'angle de la bobine, le moteur démarre avec une simple impulsion à la main et prend rapidement de la vitesse, comme on peut le voir sur notre vidéo d'essai :
+                </p>
+
+                <figure id="mcc-vid1" class="media-box">
+                    <div class="video-container">
+                        <!-- Remplacer ID_VIDEO_YOUTUBE par l'identifiant de votre vidéo -->
+                        <iframe src="https://www.youtube.com/embed/ID_VIDEO_YOUTUBE" title="Essai vidéo de la maquette MCC" allowfullscreen></iframe>
+                    </div>
+                    <figcaption>Vidéo 1.1 — Mise en rotation de la maquette alimentée en courant continu.</figcaption>
+                </figure>
+
+                <p>
+                    Notre dossier écrit détaillant les étapes de fabrication et les mesures de courant est consultable ci-dessous :
+                </p>
+
+                <figure id="mcc-pdf1" class="media-box">
+                    <iframe class="pdf-frame" src="pdf/rapport_mcc.pdf" title="Rapport PDF du projet MCC">
+                        Votre navigateur n'affiche pas directement les PDF. <a href="pdf/rapport_mcc.pdf">Télécharger le PDF ici</a>.
+                    </iframe>
+                    <figcaption>Document 1.1 — Compte-rendu complet du projet MCC.</figcaption>
+                </figure>
+            </section>
+
+            <!-- [WORD : MCC - 4. Évolutions possibles] -->
+            <section class="report-section">
+                <h3>4. Pistes d'amélioration et évolutions</h3>
+                <ul class="clean-list">
+                    <li><strong>Guidage mécanique :</strong> Remplacer les boucles de maintien par de petits supports métalliques lisses pour réduire les frottements et éviter que l'axe ne saute à haute vitesse.</li>
+                    <li><strong>Vrai inverseur de courant :</strong> Fabriquer un mini-collecteur à deux demi-bagues sur l'axe pour utiliser les deux demi-périodes comme temps moteur au lieu de compter sur l'inertie la moitié du temps.</li>
+                    <li><strong>Mesure au tachymètre :</strong> Coller une petite pastille réfléchissante sur la bobine pour relever la vitesse en tr/min selon la distance de l'aimant.</li>
+                </ul>
+            </section>
+
+            <!-- [WORD : MCC - 5. Conclusions individuelles] -->
+            <section class="report-section">
+                <h3>5. Conclusions individuelles (Projet MCC)</h3>
+                <div class="reviews-grid">
+                    <div class="review-box" data-student="axel" onclick="ciblerEtudiant('axel')">
+                        <div class="review-header">ANTOINE Axel</div>
+                        <p>
+                            Construire un moteur avec si peu de matériel oblige à bien comprendre où passe le courant et comment agit l'aimant. On voit vite que les frottements et le mauvais contact dû aux petites étincelles sur l'axe jouent énormément.
+                        </p>
+                    </div>
+                    <div class="review-box" data-student="lucas" onclick="ciblerEtudiant('lucas')">
+                        <div class="review-header">DECLERCQ Lucas</div>
+                        <p>
+                            C'est un petit projet très concret. Le point le plus délicat a été de gratter le vernis du fil au bon endroit par rapport au plan de la spire pour que la poussée magnétique se fasse pile au bon moment du tour.
+                        </p>
+                    </div>
+                    <div class="review-box" data-student="romain" onclick="ciblerEtudiant('romain')">
+                        <div class="review-header">MELIQUE Romain</div>
+                        <p>
+                            Même si le montage paraît très basique sur le papier, l'équilibrage du bobinage demande pas mal d'essais. Ça permet de bien visualiser la loi de Laplace sans passer uniquement par des formules.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- =========================================================
+             RAPPORT DÉTAILLÉ DU PROJET 2 : DIMENSIONNEMENT SOLAIRE PV
+             ========================================================= -->
+        <article id="contenu-pv" class="report-panel">
+            <div class="report-banner banner-orange">
+                <h2>Projet 2 : Dimensionnement Photovoltaïque sur le site de l'IUT A</h2>
+                <button type="button" class="btn-fermer-panel" onclick="basculerProjet('pv')">
+                    Refermer le dossier &#10005;
+                </button>
+            </div>
+
+            <!-- Table des illustrations interactive -->
+            <nav class="illustrations-toc toc-alt">
+                <h4>Table des illustrations et livrables (accès direct)</h4>
+                <ul>
+                    <li><a href="#pv-fig1">Figure 2.1 — Irradiation solaire et masques sur Villeneuve d'Ascq</a></li>
+                    <li><a href="#pv-fig2">Figure 2.2 — Aperçu des feuilles de calcul de notre fichier Excel</a></li>
+                    <li><a href="#pv-dl">Outil 2.1 — Téléchargement du classeur Excel de dimensionnement</a></li>
+                    <li><a href="#pv-pdf1">Document 2.1 — Note de calcul et justification des formules (Visionneuse PDF)</a></li>
+                </ul>
+            </nav>
+
+            <!-- [WORD : PV - 1. Mise en contexte et consignes] -->
+            <section class="report-section">
+                <h3>1. Mise en contexte et consignes</h3>
+                <p>
+                    Le second projet consiste à développer un outil sous Excel capable de dimensionner une installation solaire photovoltaïque complète sur le site de l'IUT A à Villeneuve d'Ascq. Le tableur devait intégrer toutes les données réelles d'un bureau d'études : l'irradiation de la métropole lilloise, le choix de l'inclinaison et de l'orientation optimales, l'effet d'ombrage et de masquage des bâtiments voisins, ainsi que les rendements des équipements.
+                </p>
+            </section>
+
+            <!-- [WORD : PV - 2. Introduction et fondamentaux] -->
+            <section class="report-section">
+                <h3>2. Introduction et rappels sur le dimensionnement solaire</h3>
+                <p>
+                    Pour estimer correctement l'énergie produite sur une année, on ne peut pas se contenter de multiplier la puissance crête des panneaux par l'ensoleillement moyen. Il faut d'abord récupérer l'irradiation dans le plan des capteurs en fonction de l'azimut (idéalement plein Sud, soit 0°) et de l'inclinaison (autour de 35° à Lille pour maximiser le bilan annuel).
+                </p>
+
+                <figure id="pv-fig1" class="media-box">
+                    <img src="images/irradiation_iut.jpg" alt="Graphique d'irradiation et de masquage à Villeneuve d'Ascq">
+                    <figcaption>Figure 2.1 — Profil d'irradiation mensuelle à Villeneuve d'Ascq et prise en compte du masquage.</figcaption>
+                </figure>
+
+                <p>
+                    Ensuite, nous appliquons les différents facteurs de pertes qui forment le ratio de performance ($PR$) : pertes par échauffement des cellules selon la température ambiante, pertes par masquage (acrotères de toiture, bâtiments proches ou arbres), chutes de tension dans les câbles DC/AC et rendement de conversion des onduleurs.
+                </p>
+            </section>
+
+            <!-- [WORD : PV - 3. Conception du tableur et résultats] -->
+            <section class="report-section">
+                <h3>3. Structure du tableur Excel et exploitation</h3>
+                <p>
+                    Nous avons organisé notre fichier Excel pour que la saisie des paramètres d'entrée (surface de toiture, modèle de panneau, inclinaison, masques) mette automatiquement à jour les bilans mensuels et les graphiques de production. Cela permet de comparer rapidement deux configurations, par exemple des châssis inclinés à 30° face à une pose à 15° qui réduit l'ombre portée entre les rangées.
+                </p>
+
+                <figure id="pv-fig2" class="media-box">
+                    <img src="images/capture_excel_pv.jpg" alt="Capture d'écran du tableur Excel">
+                    <figcaption>Figure 2.2 — Vue de l'onglet principal de dimensionnement et des bilans énergétiques.</figcaption>
+                </figure>
+
+                <!-- Encadré de téléchargement du fichier Excel -->
+                <div id="pv-dl" class="excel-download-banner">
+                    <div class="excel-info">
+                        <strong>Outil 2.1 — Fichier Excel de dimensionnement photovoltaïque</strong>
+                        <p>Cliquez sur le bouton ci-contre pour récupérer notre classeur complet (.xlsx) avec toutes les formules et données de Villeneuve d'Ascq.</p>
+                    </div>
+                    <a href="fichiers/dimensionnement_pv_iut.xlsx" download class="btn-excel">
+                        &#11015; Télécharger le fichier Excel
+                    </a>
+                </div>
+
+                <p>
+                    L'explication détaillée de nos hypothèses de calcul est disponible dans le rapport PDF ci-dessous :
+                </p>
+
+                <figure id="pv-pdf1" class="media-box">
+                    <iframe class="pdf-frame" src="pdf/rapport_pv.pdf" title="Rapport PDF du projet Photovoltaïque">
+                        Votre navigateur n'affiche pas directement les PDF. <a href="pdf/rapport_pv.pdf">Télécharger le PDF ici</a>.
+                    </iframe>
+                    <figcaption>Document 2.1 — Rapport d'étude et détails du modèle Excel.</figcaption>
+                </figure>
+            </section>
+
+            <!-- [WORD : PV - 4. Évolutions possibles] -->
+            <section class="report-section">
+                <h3>4. Pistes d'amélioration et évolutions</h3>
+                <ul class="clean-list">
+                    <li><strong>Courbes de charge de l'IUT :</strong> Intégrer les relevés de consommation électrique du bâtiment heure par heure pour calculer la part exacte d'autoconsommation, notamment pendant la fermeture estivale.</li>
+                    <li><strong>Vérification électrique des chaînes (Strings) :</strong> Ajouter un contrôle automatique des tensions à vide ($V_{oc}$) par grand froid et du courant de court-circuit ($I_{sc}$) par rapport aux limites des entrées MPPT de l'onduleur.</li>
+                    <li><strong>Calcul de rentabilité :</strong> Ajouter le coût du matériel et le prix du kWh réseau pour sortir un temps de retour sur investissement.</li>
+                </ul>
+            </section>
+
+            <!-- [WORD : PV - 5. Conclusions individuelles] -->
+            <section class="report-section">
+                <h3>5. Conclusions individuelles (Projet Photovoltaïque)</h3>
+                <div class="reviews-grid">
+                    <div class="review-box" data-student="axel" onclick="ciblerEtudiant('axel')">
+                        <div class="review-header">ANTOINE Axel</div>
+                        <p>
+                            Travailler sur le site de notre propre IUT permet de bien se représenter les problèmes de masquage et de place disponible en toiture. On comprend vite pourquoi le rendement réel est différent de la puissance crête annoncée.
+                        </p>
+                    </div>
+                    <div class="review-box" data-student="lucas" onclick="ciblerEtudiant('lucas')">
+                        <div class="review-header">DECLERCQ Lucas</div>
+                        <p>
+                            J'ai beaucoup aimé concevoir l'architecture de ce fichier Excel pour que tout soit lié proprement. Automatiser la prise en compte de l'inclinaison, du masquage et des pertes permet d'avoir une vraie vue d'ensemble d'un projet solaire.
+                        </p>
+                    </div>
+                    <div class="review-box" data-student="romain" onclick="ciblerEtudiant('romain')">
+                        <div class="review-header">MELIQUE Romain</div>
+                        <p>
+                            Ce projet met directement en pratique nos cours d'énergie. Le fait de construire notre propre outil de calcul au lieu d'utiliser un logiciel tout fait oblige à maîtriser chaque étape de la chaîne de rendement.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <!-- =========================================================
+             SECTION PERMANENTE : BILAN DE COMPÉTENCES & RETOURS GLOBAUX
+             ========================================================= -->
+        <section id="bilan-global" class="bilan-wrapper">
+            <div class="section-heading">
+                <h2>Bilan de compétences et retours sur la SAÉ</h2>
+                <p>Synthèse des acquis de notre trinôme sur l'ensemble des deux projets.</p>
+            </div>
+
+            <!-- [WORD : BILAN - Compétences] -->
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h4>Concevoir</h4>
+                    <p>
+                        Dimensionnement énergétique complet sous tableur pour le projet photovoltaïque et conception d'un prototype épuré pour la maquette de MCC.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h4>Vérifier</h4>
+                    <p>
+                        Mise au point mécanique et électrique de la rotation du bobinage en atelier, et contrôle de cohérence des productibles solaires obtenus sur le site de Lille.
+                    </p>
+                </div>
+                <div class="skill-card">
+                    <h4>Maintenir &amp; Communiquer</h4>
+                    <p>
+                        Organisation du travail à trois sur deux sujets menés de front et réalisation de cette interface web pour présenter nos résultats et documents clairement.
+                    </p>
+                </div>
+            </div>
+
+            <!-- [WORD : BILAN - Retours personnels globaux] -->
+            <h3 class="global-reviews-title">Retours personnels sur l'ensemble de la SAÉ</h3>
+            <p class="hint-text">Astuce : vous pouvez cliquer sur une case ou sur un nom en haut de page pour isoler tous les avis d'un étudiant.</p>
+
+            <div class="reviews-grid">
+                <div class="review-box" data-student="axel" onclick="ciblerEtudiant('axel')">
+                    <div class="review-header">ANTOINE Axel</div>
+                    <p>
+                        Avoir deux projets plus courts au lieu d'un seul gros sujet nous a permis d'alterner entre la manipulation pratique en salle de TP et la réflexion sur Excel. La répartition du travail dans le groupe s'est faite naturellement et le rendu sur site web rassemble bien tout ce qu'on a produit.
+                    </p>
+                </div>
+                <div class="review-box" data-student="lucas" onclick="ciblerEtudiant('lucas')">
+                    <div class="review-header">DECLERCQ Lucas</div>
+                    <p>
+                        Ces deux sujets résument bien l'esprit du parcours EME : comprendre la physique d'une machine électrique par l'expérimentation, et savoir chiffrer sérieusement un projet d'énergie renouvelable. Le fait de tout regrouper sur une page web simple rend la consultation beaucoup plus fluide qu'une pile de fichiers séparés.
+                    </p>
+                </div>
+                <div class="review-box" data-student="romain" onclick="ciblerEtudiant('romain')">
+                    <div class="review-header">MELIQUE Romain</div>
+                    <p>
+                        Cette SAÉ en deux parties était très intéressante parce qu'elle mobilise des compétences différentes. On a pu s'entraider aussi bien quand la maquette MCC avait du mal à se lancer que lorsqu'il fallait vérifier les formules d'ensoleillement et de rendement dans le tableur.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p><strong>IUT A de l'Université de Lille — Département GEII (Parcours EME)</strong></p>
+            <p>ANTOINE Axel, DECLERCQ Lucas, MELIQUE Romain — Enseignant référent : M. LE TORIELLEC David</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
